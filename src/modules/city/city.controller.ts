@@ -11,7 +11,7 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
-import { INTERNAL_SERVER_ERROR_MESSAGE } from 'src/constants';
+import { INTERNAL_SERVER_ERROR_MESSAGE } from '../../constants';
 import { WeatherService } from '../weather/weather.service';
 import { CityService } from './city.service';
 import { CityResponse } from './contracts/city.contract';
@@ -80,7 +80,9 @@ export class CityController {
   @Delete(':id')
   async deleteCity(@Param('id') id: string): Promise<DeleteCityResponse> {
     try {
-      await this.cityService.delete(id);
+      const city = await this.cityService.findById(id);
+      if (!city) throw new BadRequestException(`City with ID ${id} not found`);
+      await this.cityService.deleteCity(id);
       return { success: true };
     } catch (err) {
       return { success: false };

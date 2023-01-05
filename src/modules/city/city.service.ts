@@ -33,7 +33,7 @@ export class CityService {
     return this.cityModel.findByIdAndUpdate(id, city, { new: true }).exec();
   }
 
-  async delete(id: string): Promise<City> {
+  async deleteCity(id: string): Promise<City> {
     return this.cityModel
       .findByIdAndUpdate(id, { isDeleted: true }, { new: true })
       .exec();
