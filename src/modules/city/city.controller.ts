@@ -44,7 +44,7 @@ export class CityController {
       if (!city) throw new NotFoundException(`City "${name}" not found`);
       return city;
     } catch (err) {
-      throw new InternalServerErrorException(INTERNAL_SERVER_ERROR_MESSAGE);
+      throw err;
     }
   }
 
@@ -73,7 +73,7 @@ export class CityController {
       if (!city) throw new BadRequestException(`City with ID ${id} not found`);
       return city;
     } catch (err) {
-      throw new InternalServerErrorException(INTERNAL_SERVER_ERROR_MESSAGE);
+      throw err;
     }
   }
 
