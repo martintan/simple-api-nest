@@ -1,7 +1,8 @@
-import * as dotenv from 'dotenv';
+import 'dotenv/config';
+// import * as dotenv from 'dotenv';
 
 // Load the correct environment variables file
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+// dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 export const PORT = process.env.PORT;
 export const MONGODB_URL = process.env.MONGODB_URL;

@@ -10,8 +10,6 @@ RUN npm install --only=development
 
 COPY . .
 
-COPY .env.development .env
-
 RUN npm run build
 
 FROM node:16-alpine as production
@@ -27,8 +25,6 @@ COPY package*.json ./
 RUN npm install --only=production
 
 COPY . .
-
-COPY .env.production .env
 
 COPY --from=development /usr/src/app/dist ./dist
 
